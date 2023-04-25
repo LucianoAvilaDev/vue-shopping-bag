@@ -6,13 +6,24 @@ export default createStore({
   
   //propriedade de dados
   state: {
-    products: []
+    products: [],
+    productsInBag: []
   },
 
   //são síncronas
   mutations: {
     loadProducts(state, products){
       state.products = products
+    },
+
+    addToBag(state, product){
+      state.productsInBag.push(product)
+    },
+
+    removeFromBag(state, productId){
+      var updatedBag =  state.productsInBag.filter(item => item.id != productId)
+      
+      state.productsInBag = updatedBag
     }
   },
 
@@ -26,6 +37,14 @@ export default createStore({
         commit('loadProducts', response.data);
       })
     },
+
+    addToBag({ commit }, product){
+      commit("addToBag", product)
+    },
+
+    removeFromBag({ commit }, productId){
+      commit("removeFromBag", productId)
+    }
 
   },
   modules: {
