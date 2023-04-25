@@ -1,24 +1,16 @@
-# new-shopping-bag
+# Simple VUE.js Shopping Bag
 
-## Project setup
-```
-npm install
-```
+- Aplicação compras simulando e-commerce para estudo de Vue utilizando o CLI, requisições com VueAxios e integração de componentes.
+- Os produtos foram obtidos na API [Fake Store API](https://fakestoreapi.com/docs)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Instalações
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- [Node.js](https://nodejs.org/en/download)
+- Yarn: **npm install -g yarn**
+- Vue-CLI: **yarn global add @vue/cli**
+- Axios: **yarn add axios**
+- VueAxios: **yarn add vue-axios**
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Descrição
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
