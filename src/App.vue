@@ -12,6 +12,8 @@ import { mapState } from 'vuex';
   export default {
     created(){
      this.$store.dispatch('loadProducts')
+     this.$store.dispatch('loadBag')
+
     },
 
     computed: mapState(['productsInBag'])

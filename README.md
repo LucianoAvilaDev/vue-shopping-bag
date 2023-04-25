@@ -13,4 +13,20 @@
 
 ## Descrição
 
+- E-commerce alimentado pela API aberta [Fake Store API](https://fakestoreapi.com/docs)
+- Na página **Início** os produtos são mostrados e podem ser adicionados ou removidos do carrinho
+- Na página **Carrinho** são mostrados os produtos adicionados onde suas quantidades podem ser alteradas
+- E **Carrinho** também é possível ver o total da compra
+- Segue abaixo alguns screenshots da aplicação:
 
+<br>
+<img src="./samples/sample01.png">
+<br>
+<br>
+<img src="./samples/sample02.png">
+<br>
+<br>
+<img src="./samples/sample03.png">
+<br>
+<br>
+<img src="./samples/sample04.png">
