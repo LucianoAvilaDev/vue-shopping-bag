@@ -2,20 +2,26 @@
   <div class="basket">
     <div class="items">
 
-      <div class="item">
-        <div class="remove">Remover Produto</div>
-        <div class="photo"><img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" alt=""></div>
-        <div class="description">Mens Casual Premium Slim Fit T-Shirts </div>
-        <div class="price">
-          <span class="quantity-area">
-            <button disabled="">-</button>
-            <span class="quantity">1</span>
-            <button>+</button>
-          </span>
-          <span class="amount">R$ 22.30</span>
+      <template v-if="productsInBag.length">
+        <div class="item" v-for="(product, index) in productsInBag" :key="index" >
+          <div class="remove" @click="this.$store.dispatch('removeFromBag', product.id)">Remover Produto</div>
+          <div class="photo"><img :src="product.image" alt=""></div>
+          <div class="description">{{ product.title }} </div>
+          <div class="price">
+            <span class="quantity-area">
+              <button @click="product.quantity--" :disabled="product.quantity <= 1" > - </button>
+              <span class="quantity">{{ product.quantity }}</span>
+              <button @click="product.quantity++">+</button>
+            </span>
+            <span class="amount">R$ {{ (product.quantity * product.price).toFixed(2) }}</span>
+          </div>
         </div>
-      </div>
-      <div class="grand-total"> Total do pedido: R$ 22.30</div>
+        <div class="grand-total"> Total do pedido: R$ {{ this.orderTotal() }}</div>
+      </template>
+
+      <template v-else>
+        <h4>O carrinho está vazio!</h4>
+      </template>
 
     </div>
   </div>
@@ -23,14 +29,28 @@
 
 <script>
 
-export default {
-  name: 'ShoppingBasket',
+  import { mapState } from 'vuex';
 
-  methods: {
-   
-  },
- 
-}
+  export default {
+    name: 'ShoppingBasket',
+
+    methods: {
+      orderTotal(){
+        var total = 0
+
+        this.productsInBag.forEach(item => {
+          total += item.price * item.quantity 
+        })
+
+        return total.toFixed(2)
+      }
+    },
+
+    computed: mapState([
+      'productsInBag'
+    ])
+  
+  }
 </script>
 
 <style lang="scss">

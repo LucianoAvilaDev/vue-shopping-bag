@@ -22,34 +22,30 @@
 
 <script>
 
-export default {
-  name: 'HomePage',
-  data() {
-    return {
-      
-    }
-  },
-
-  computed: {
-    products (){
-      return this.$store.state.products
+  import { mapState } from 'vuex';
+  
+  export default {
+    name: 'HomePage',
+    data() {
+      return {
+        
+      }
     },
-    productsInBag(){
-      return this.$store.state.productsInBag
 
+    computed: mapState([ 
+      'products', 'productsInBag'
+    ]),
+
+    methods: {
+    addToBag (product){
+      product.quantity = 1
+      this.$store.dispatch("addToBag", product)
+    },
+    isInBag(product){
+      return this.productsInBag.find(item => item.id == product.id)
     }
-  },
-
-  methods: {
-   addToBag (product){
-    product.quantity = 1
-    this.$store.dispatch("addToBag", product)
-   },
-   isInBag(product){
-     return this.productsInBag.find(item => item.id == product.id)
-   }
+    }
   }
-}
 </script>
 
 <style lang="scss">
